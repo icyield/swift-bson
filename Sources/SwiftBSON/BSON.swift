@@ -94,10 +94,11 @@ public enum BSON {
     ///   - `DecodingError` if `json` is malformatted extended json
     internal init(fromExtJSON json: JSON, keyPath: [String]) throws {
         // Spec requires that we try int32, try int64, then try double for decoding numbers
-        if let int32 = try Int32(fromExtJSON: json, keyPath: keyPath) {
+       /* if let int32 = try Int32(fromExtJSON: json, keyPath: keyPath) {
             self = int32.bson
             return
-        }
+        }*/
+        // always use 64bit Int
         if let int64 = try Int64(fromExtJSON: json, keyPath: keyPath) {
             self = int64.bson
             return
