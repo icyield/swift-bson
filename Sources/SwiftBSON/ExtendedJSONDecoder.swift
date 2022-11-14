@@ -184,9 +184,11 @@ public class ExtendedJSONDecoder {
         case let .bool(b):
             return .scalar(.bool(b))
         case let .number(numString):
-            if let int32 = Int32(numString) {
+            // all ints 64 bit
+           /* if let int32 = Int32(numString) {
                 return .scalar(.int32(int32))
-            } else if let int64 = Int64(numString) {
+            } else */
+            if let int64 = Int64(numString) {
                 return .scalar(.int64(int64))
             } else if let double = Double(numString) {
                 return .scalar(.double(double))
